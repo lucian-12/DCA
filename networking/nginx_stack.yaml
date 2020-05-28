@@ -1,0 +1,17 @@
+version: "3.7"
+
+networks:
+    public:
+      driver: overlay
+      driver_opts:
+        encrypted: 'true'
+
+services:
+  mynginx:
+    image: nginx
+    networks:
+        - public
+    ports:
+        - '8080:80'
+    deploy:
+      replicas: 6
